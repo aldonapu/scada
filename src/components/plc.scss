@@ -1,0 +1,346 @@
+.plc-control {
+  width: 400px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* =========================
+   FROM / TO
+========================= */
+
+.route-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.route-row span {
+  white-space: nowrap;
+}
+
+.route-box {
+  height: 22px;
+  flex: 1;
+
+  background: #000;
+}
+
+.route-box--small {
+  flex: 0 0 105px;
+}
+
+
+/* =========================
+   PLC PANEL
+========================= */
+
+.plc-panel {
+  position: relative;
+
+  width: 100%;
+  height: 90px;
+
+  box-sizing: border-box;
+
+  border: 2px solid #999;
+  color: white;
+
+  background: linear-gradient(
+    to bottom,
+    #374151,
+    #000000
+  );
+
+  box-shadow:
+    inset 0 1px 0 #fff,
+    0 1px 2px rgba(0, 0, 0, .25);
+
+  display: flex;
+  align-items: center;
+}
+
+
+/* =========================
+   PLC MACHINE
+========================= */
+
+.plc-machine {
+  width: 145px;
+
+  margin-left: 8px;
+
+  align-self: stretch;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.plc-machine-image {
+  width: 150px;
+  height: 50px;
+
+  border: 2px solid #555;
+
+  border-radius: 3px;
+
+  background: black;
+  box-shadow:
+    inset 0 0 5px rgba(0, 0, 0, .6);
+}
+
+
+/* PLC SLOT */
+
+.plc-slots {
+  height: 100%;
+
+  display: flex;
+
+  justify-content: space-around;
+
+  align-items: center;
+
+  padding: 0 5px;
+}
+
+.plc-slots span {
+  width: 10px;
+  height: 42px;
+
+  border-left: 2px solid white;
+  border-right: 2px solid white;
+
+  background: linear-gradient(
+    to right,
+   grey
+  );
+}
+
+
+/* PLC NAME */
+
+.plc-name {
+  font-size: 12px;
+
+  font-weight: bold;
+
+  margin-top: 2px;
+}
+
+
+/* =========================
+   LED STATUS
+========================= */
+
+.plc-status {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+
+  margin-left: 8px;
+}
+
+.plc-led-item {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 12px;
+
+  white-space: nowrap;
+}
+
+.plc-led {
+  width: 18px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  border: 1px solid #555;
+
+  background: radial-gradient(
+    circle at 35% 30%,
+    #fff,
+    #777 55%,
+    #333
+  );
+
+  box-shadow:
+    inset 0 0 3px #222;
+}
+
+.plc-led--on {
+  background: radial-gradient(
+    circle at 35% 30%,
+    #fff,
+    #54e66c 35%,
+    #009b18 70%,
+    #005f0d
+  );
+
+  box-shadow:
+    0 0 5px #22d83d,
+    inset 0 0 3px #fff;
+}
+
+
+/* =========================
+   EMERGENCY BUTTON
+========================= */
+
+.emergency-button {
+  position: absolute;
+
+  right: 7px;
+  top: 5px;
+
+  width: 58px;
+  height: 65px;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  padding: 0;
+}
+
+.emergency-circle {
+  position: absolute;
+
+  left: 4px;
+  top: 14px;
+
+  width: 45px;
+  height: 45px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+
+  font-size: 28px;
+
+  font-weight: bold;
+
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      #d93a3a,
+      #920b0b 55%,
+      #4d0000
+    );
+
+  border: 3px solid #9b8a37;
+
+  box-shadow:
+    inset 0 2px 4px rgba(255,255,255,.4),
+    0 2px 4px rgba(0,0,0,.5);
+}
+
+.emergency-text {
+  position: absolute;
+
+  top: 0;
+  left: 5px;
+
+  font-size: 7px;
+
+  font-weight: bold;
+
+  transform: rotate(-20deg);
+
+  color: #222;
+}
+
+.emergency-stop {
+  position: absolute;
+
+  bottom: 0;
+  left: 12px;
+
+  font-size: 7px;
+
+  font-weight: bold;
+
+  color: #222;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.plc-buttons {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr);
+
+  gap: 12px;
+
+  margin-top: 5px;
+}
+
+.plc-buttons button {
+  height: 28px;
+
+  border: 1px solid #999;
+
+  background: linear-gradient(
+    to bottom,
+    #fff,
+    #ddd
+  );
+
+  box-shadow:
+    inset 0 1px 0 #fff;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+}
+
+.plc-buttons button:hover {
+  background: linear-gradient(
+    to bottom,
+    #fff,
+    #ccc
+  );
+}
+
+.plc-buttons button:active {
+  box-shadow:
+    inset 0 2px 4px #888;
+}
+
+.plc-buttons .estop-button {
+  background: linear-gradient(
+    to bottom,
+    #fff,
+    #e2e2e2
+  );
+}
+
+
+/* =========================
+   BOTTOM FROM TO
+========================= */
+
+.route-row--bottom {
+  margin-top: 105px;
+}

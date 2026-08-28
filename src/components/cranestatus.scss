@@ -1,0 +1,326 @@
+.C-CraneStatus {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  border: 0;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(20px);
+  padding: 5px;
+  
+  
+
+/* =========================
+   HEADER
+========================= */
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding-bottom: 12px;
+  margin-bottom: 18px;
+
+  border-bottom: 1px solid #e2e8f0;
+
+  .metric-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #334155;
+  }
+
+  .metric-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #2563eb;
+  }
+}
+
+/* =========================
+   MAIN STATUS
+========================= */
+
+.main-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.status-number {
+  font-size: 26px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.status-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  font-size: 15px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.status-button {
+  border: none;
+  border-radius: 6px;
+
+  padding: 6px 14px;
+
+  background: #2563eb;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+
+  &:hover {
+    background: #1d4ed8;
+  }
+}
+
+/* =========================
+   LED INDICATORS
+========================= */
+
+.indicator-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 12px 0;
+}
+
+.bottom-indicator {
+  margin-bottom: 0;
+}
+
+/* =========================
+   TRANSACTION GRID
+========================= */
+
+.transaction-grid {
+  display: grid;
+
+  grid-template-columns: 1fr;
+
+  gap: 16px 15px;
+
+  margin-top: 15px;
+}
+
+.field-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+
+  label {
+    flex: 0 0 7rem;
+    min-width: 0;
+
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+  }
+
+  > input {
+    flex: 1;
+    min-width: 0;
+  }
+}
+.field-group-1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 0;
+
+  label {
+    flex: 0 0 7rem;
+    min-width: 0;
+
+    font-size: 13px;
+    font-weight: 500;
+    color: #64748b;
+  }
+
+  > input {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.label-short>label{
+    min-width: 5rem !important;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+input {
+  height: 32px;
+
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+
+  padding: 5px 9px;
+
+  background: #f8fafc;
+
+  color: #334155;
+
+  font-size: 13px;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  &:focus {
+    border-color: #60a5fa;
+    background: white;
+  }
+}
+
+/* =========================
+   MULTI INPUT
+========================= */
+
+.multi-input {
+  display: flex;
+  gap: 5px;
+
+  flex: 1;
+
+  min-width: 0;
+
+  input {
+    width: 100%;
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 5px 6px;
+    font-size: 12px;
+  }
+}
+
+
+/* =========================
+   TASK
+========================= */
+
+.task-input {
+  display: flex;
+  gap: 6px;
+
+  flex: 1;
+
+  input {
+    width: auto;
+    flex: 0 0 35%;
+  }
+  .standby{
+    width: 10px;
+    flex: 1 1 auto;
+  }
+}
+
+/* =========================
+   BOTTOM SECTION
+========================= */
+
+.bottom-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 20px;
+  padding-top: 15px;
+
+  border-top: 1px solid #e2e8f0;
+}
+
+.counter-section {
+  display: flex;
+  gap: 8px;
+
+  input {
+    width: 30px;
+    text-align: center;
+  }
+}
+
+/* =========================
+   ERROR STATUS
+========================= */
+
+.transaction-status {
+  display: grid;
+
+  grid-template-columns: 80px 1fr;
+
+  gap: 10px;
+
+  margin-top: 15px;
+
+  input {
+    width: 100%;
+  }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .transaction-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .indicator-section {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-status {
+    align-items: flex-start;
+  }
+
+  .field-group {
+    flex-direction: column;
+    align-items: stretch;
+
+    label {
+      min-width: auto;
+    }
+  }
+
+  .multi-input {
+    width: 100%;
+  }
+
+  .bottom-section {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 15px;
+  }
+
+  .counter-section {
+    justify-content: flex-end;
+  }
+}
+}
