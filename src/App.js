@@ -13,11 +13,7 @@ function App() {
         <BrowserRouter>
             <Routes>
                 <Route element={<Dashboardlayout />}>
-                    <Route path="/" element={<Dashboard />} />
-                    <Route path="/data" element={<Data />} />
-                    <Route path="/orders" element={<Orders />} />
-                    <Route path="/users" element={<Users />} />
-                    <Route path="/settings" element={<Settings />} />
+                    <Route path="/scada" element={<Dashboard />} />
                 </Route>
             </Routes>
         </BrowserRouter>
