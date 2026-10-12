@@ -2,9 +2,9 @@ import { NavLink } from "react-router-dom";
 import "./sidebar.scss";
 
 const menuItems = [
-    { path: "/", label: "Dashboard", icon: "pi pi-home" },
+    { path: "/scada", label: "Dashboard", icon: "pi pi-home" },
     { path: "/data", label: "Data", icon: "pi pi-database" },
-    { path: "/orders", label: "Sensor", icon: "pi pi-sliders-v" },
+    { path: "/orders", label: "Reviews", icon: "pi pi-cog" },
     { path: "/users", label: "Users", icon: "pi pi-users" },
     { path: "/settings", label: "Settings", icon: "pi pi-cog" },
 ];

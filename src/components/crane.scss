@@ -4,37 +4,59 @@
     align-items: center;
     flex-direction: column;
     margin-top: 10px;
-.cranemodel{
-    display: flex;
-    flex-direction: column;
-    width: 100px;
-    height: 100px;
-    align-items: center;
-    margin-top: 10px;
-
-    .batang1{
-        width: 70px;
-        height: 10px;
-        background-color: grey;
-        border: 1px solid;
-    }
-    .batang2{
-        width: 50px;
-        height: 20%;
-        background-color: grey;
-        border: 1px solid;
-        align-items: center;
-        justify-content: center;
+    .cranemodel{
         display: flex;
-        span{
-            color: white;
+        flex-direction: column;
+        width: 100px;
+        height: 100px;
+        align-items: center;
+        margin-top: 10px;
+
+        .batang1{
+            width: 70px;
+            height: 10px;
+            background-color: #ffffe4;
+            border: 1px solid;
+        }
+        .batang2{
+            width: 50px;
+            height: 20%;
+            background-color: #ffffe4;
+            border: 1px solid;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            span{
+                color: rgb(12, 11, 11);
+                background-color: #ffffe4;
+            }
+        }
+        .batang3{
+            width: 80px;
+            height: 20px;
+            background-color: #ffffe4;
+            border: 1px solid;
+        }
+
+        &[data-status="GRAY"] {
+            .batang1, .batang2, .batang3{
+                background-color: #555;
+            }
+        }
+        &[data-status="GREEN"] {
+            .batang1, .batang2, .batang3{
+                background-color: #006400;
+            }
+        }
+        &[data-status="YELLOW"] {
+            .batang1, .batang2, .batang3{
+                background-color: #ffd700;
+            }
+        }
+        &[data-status="RED"] {
+            .batang1, .batang2, .batang3{
+                background-color: #8B0000;
+            }
         }
     }
-     .batang3{
-        width: 80px;
-        height: 20px;
-        background-color: grey;
-        border: 1px solid;
-    }
-}
 }

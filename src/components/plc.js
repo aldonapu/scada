@@ -1,158 +1,71 @@
-import React, { useState } from "react";
+
+
 import "./plc.scss";
 
-const Led = ({ active, label }) => {
-  return (
-    <div className="plc-led-item">
-      <span
-        className={`plc-led ${active ? "plc-led--on" : ""}`}
-      ></span>
+const modules = (data) => {return [
+  { id: 1, name: "Driver", type: "dvrSts", status: data?.dvrSts },
+  { id: 2, name: "COM", type: "communication", status: data?.comSts },
+  { id: 3, name: "Online", type: "Online", status: data?.online },
+  { id: 4, name: "Error", type: "Error", status: data?.err },
+]}
 
-      <span className="plc-led-label">
-        {label}
-      </span>
-    </div>
-  );
-};
+    
 
-const PlcControl = () => {
-  const [driverRunning, setDriverRunning] = useState(true);
-  const [connected, setConnected] = useState(true);
-
-  const handleStart = () => {
-    setDriverRunning(true);
-  };
-
-  const handleStop = () => {
-    setDriverRunning(false);
-  };
-
-  const handleReset = () => {
-    setDriverRunning(false);
-  };
-
-  const handleEmergency = () => {
-    setDriverRunning(false);
-  };
+function PLC({ data, style }) {
+  const status = (
+        data?.dvrSts && data?.comSts && data?.online && data?.err ? "RED"
+        : data?.dvrSts && data?.comSts && data?.online ? "GREEN"
+        : data?.dvrSts && data?.comSts ? "YELLOW"
+        : data?.dvrSts ? "GRAY"
+        : "WHITE"
+      )
 
   return (
-    <div className="plc-control">
+    <div className="plc-wrapper" style={{...style}} data-status={status}>
+      <div className="plc-rack">
+        <div className="plc-modules">
+          {modules(data).map((module) => (
+            <div
+              className={`plc-module ${module.type}`}
+              key={module.id}
+            >
+              <div className="module-top">
+                <span>{module.name}</span>
+                <span
+                  className={`module-led ${
+                    module.status ? "active" : "inactive"
+                  }`}
+                />
+              </div>
 
-      {/* FROM - TO ATAS */}
-      <div className="route-row">
-        <span>From</span>
+              <div className="module-body">
+                <div className="module-label">
+                  {module.id.toString().padStart(2, "0")}
+                </div>
 
-        <input type="text" readOnly/>
+                <div className="module-slots">
+                  {Array.from({ length: 12 }, (_, index) => (
+                    <span
+                      key={index}
+                      className={`slot ${
+                        module.status && index % 3 === 0
+                          ? "slot-active"
+                          : ""
+                      }`}
+                    />
+                  ))}
+                </div>
+              </div>
 
-        <span>To</span>
-
-        <input type="text" readOnly/>
-      </div>
-
-
-      {/* PLC PANEL */}
-      <div className="plc-panel">
-
-        {/* KIRI - PLC */}
-        <div className="plc-machine">
-
-          <div className="plc-machine-image">
-
-            <div className="plc-slots">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
+              <div className="module-bottom" />
             </div>
-
-          </div>
-
-          <div className="plc-name">
-            PLC 25-Crane 11 Station
-          </div>
-
+          ))}
         </div>
 
-
-        {/* LED STATUS */}
-        <div className="plc-status">
-
-          <Led
-            active={driverRunning}
-            label="Driver Running"
-          />
-
-          <Led
-            active={connected}
-            label="Connected"
-          />
-
-        </div>
-
-
-        {/* EMERGENCY */}
-        <button
-          className="emergency-button"
-          onClick={handleEmergency}
-        >
-
-
-          <span className="emergency-circle">
-            
-          </span>
-
-          <span className="emergency-stop">
-           STOP
-          </span>
-        </button>
-
+        <div className="plc-bottom-rail" />
       </div>
-
-
-      {/* BUTTON */}
-      <div className="plc-buttons">
-
-        <button onClick={handleStart}>
-          Start
-        </button>
-
-        <button onClick={handleStop}>
-          Stop
-        </button>
-
-        <button onClick={handleReset}>
-          Reset
-        </button>
-
-        <button
-          className="estop-button"
-          onClick={handleEmergency}
-        >
-          E-Stop
-        </button>
-
-      </div>
-
-
-      {/* FROM - TO BAWAH */}
-      <div className="route-row route-row--bottom">
-
-        <span>From</span>
-
-        <input type="text" readOnly/>
-
-        <span>To</span>
-
-        <input type="text" readOnly />
-
-      </div>
-
     </div>
   );
-};
+}
 
-export default PlcControl;
+export default PLC;

@@ -1,48 +1,366 @@
-.page {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.orders-page {
+    gap: 0.65rem;
+    min-width: 0;
 
-    &__header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-    }
-
-    &__eyebrow {
-        margin: 0 0 4px;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        letter-spacing: 0.18em;
-        color: #7b8cb5;
+    .page__header {
+        margin-bottom: 0;
     }
 
     h1 {
-        margin: 0;
-        font-size: 1.8rem;
+        color: #0f172a;
+        font-size: clamp(1.55rem, 2.4vw, 2rem);
+        font-weight: 750;
+        letter-spacing: -0.04em;
     }
 
-    &__action {
-        border: 0;
+    &__summary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.55rem 0.8rem;
+        border: 1px solid #dbeafe;
         border-radius: 999px;
-        padding: 10px 16px;
-        background: linear-gradient(135deg, #6c7cff 0%, #8b9bff 100%);
-        color: white;
-        box-shadow: 0 12px 25px rgba(108, 124, 255, 0.25);
-        cursor: pointer;
+        background: #eff6ff;
+        color: #1d4ed8;
+        font-size: 0.76rem;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+
+    &__summary-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background: #3b82f6;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.14);
+    }
+
+    &__message {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        min-height: 72px;
+        padding: 1rem 1.25rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        background: #fff;
+        color: #475569;
+        font-size: 0.9rem;
+
+        i {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        &--error {
+            border-color: #fecaca;
+            background: #fef2f2;
+            color: #b91c1c;
+
+            i {
+                color: #dc2626;
+            }
+        }
     }
 }
 
-.content-grid {
+.orders-overview {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 18px;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+    align-items: start;
+    gap: 0.65rem;
+    min-width: 0;
 }
 
-.list {
-    padding-left: 18px;
-    color: #45536b;
-    display: grid;
-    gap: 8px;
+.orders-line {
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 5px 18px rgba(15, 23, 42, 0.05);
+
+    &__heading {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.55rem 0.75rem;
+        border-bottom: 1px solid #edf1f6;
+        background: linear-gradient(135deg, #fff, #f8fafc);
+
+        h2 {
+            margin: 0.15rem 0 0;
+            color: #0f172a;
+            font-size: 1rem;
+            font-weight: 750;
+        }
+    }
+
+    &__eyebrow {
+        color: #64748b;
+        font-size: 0.62rem;
+        font-weight: 700;
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+    }
+
+    &__state {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.35rem 0.6rem;
+        border-radius: 999px;
+        font-size: 0.68rem;
+        font-weight: 700;
+
+        > span {
+            width: 0.42rem;
+            height: 0.42rem;
+            border-radius: 50%;
+        }
+
+        &.is-online {
+            background: #f0fdf4;
+            color: #15803d;
+
+            > span {
+                background: #22c55e;
+            }
+        }
+
+        &.is-offline {
+            background: #f1f5f9;
+            color: #64748b;
+
+            > span {
+                background: #94a3b8;
+            }
+        }
+    }
+
+    &__plc {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 0.25rem;
+        padding: 0.35rem 0.55rem;
+        border-bottom: 1px solid #edf1f6;
+        background: #fbfdff;
+
+        .plc-wrapper {
+            width: min(100%, 360px);
+        }
+
+        .plc-rack {
+            padding: 3px 3px 2px;
+        }
+
+        .plc-modules {
+            gap: 2px;
+        }
+
+        .module-top {
+            padding: 1px 2px;
+            font-size: 6px;
+        }
+
+        .module-body {
+            padding: 1px 2px;
+        }
+
+        .module-label {
+            margin-bottom: 1px;
+            font-size: 6px;
+        }
+
+        .module-slots {
+            gap: 1px;
+        }
+
+        .slot {
+            height: 1px;
+        }
+
+        .module-bottom {
+            height: 3px;
+        }
+
+        .plc-bottom-rail {
+            height: 3px;
+            margin-top: 2px;
+        }
+    }
+
+    &__plc-label {
+        align-self: flex-start;
+        color: #64748b;
+        font-size: 0.62rem;
+        font-weight: 750;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    &__plc-placeholder {
+        display: grid;
+        width: min(100%, 360px);
+        min-height: 36px;
+        place-items: center;
+        border: 1px dashed #cbd5e1;
+        border-radius: 4px;
+        color: #94a3b8;
+        font-size: 0.75rem;
+    }
+
+    &__diagram {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 64px minmax(0, 1fr);
+        align-items: center;
+        gap: 0.2rem;
+        min-height: 154px;
+        padding: 0.35rem 0.5rem;
+        background:
+            linear-gradient(to bottom, transparent calc(50% - 1px), #e2e8f0 calc(50% - 1px), #e2e8f0 calc(50% + 1px), transparent calc(50% + 1px)),
+            #fbfdff;
+    }
+
+    &__conveyors {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: center;
+        justify-items: center;
+        gap: 0.3rem;
+        min-width: 0;
+    }
+
+    &__crane {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        align-self: stretch;
+        min-width: 0;
+        min-height: 120px;
+        padding: 0.35rem 0.15rem;
+        border-radius: 8px;
+        border-right: 1px dashed #cbd5e1;
+        border-left: 1px dashed #cbd5e1;
+        background: linear-gradient(180deg, #f1f5f9 0%, #fff 50%, #f1f5f9 100%);
+
+        .cranenumber {
+            gap: 0.3rem;
+            margin: 0;
+            color: #334155;
+            font-size: 0.68rem;
+            font-weight: 700;
+        }
+
+        .cranemodel {
+            width: 52px;
+            height: 66px;
+            margin-top: 0;
+
+            .batang1 {
+                width: 44px;
+                height: 8px;
+            }
+
+            .batang2 {
+                width: 32px;
+                height: 22px;
+                font-size: 0.68rem;
+            }
+
+            .batang3 {
+                width: 52px;
+                height: 15px;
+            }
+        }
+    }
+
+    &__crane-placeholder {
+        color: #94a3b8;
+        font-size: 0.65rem;
+        text-align: center;
+    }
+}
+
+.orders-conveyor {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+
+    &__label {
+        max-width: 100%;
+        overflow: hidden;
+        color: #64748b;
+        font-size: 0.62rem;
+        font-weight: 700;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .conveyor {
+        width: 34px;
+        height: 64px;
+        gap: 2px;
+        border-width: 2px;
+
+        span {
+            width: 100%;
+            height: 7px;
+            flex: 0 0 7px;
+        }
+    }
+}
+
+@media (max-width: 640px) {
+    .orders-page {
+        gap: 0.65rem;
+
+        .page__header {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+    }
+
+    .orders-overview {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .orders-line {
+        &__diagram {
+            grid-template-columns: minmax(0, 1fr) 62px minmax(0, 1fr);
+            min-height: 136px;
+            padding: 0.35rem 0.4rem;
+        }
+
+        &__plc {
+            padding: 0.35rem 0.45rem;
+        }
+
+        &__crane .cranemodel {
+            transform: scale(0.82);
+        }
+
+        &__crane {
+            min-height: 112px;
+        }
+    }
+
+    .orders-conveyor .conveyor {
+        width: 32px;
+        height: 60px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .orders-page *,
+    .orders-page *::before,
+    .orders-page *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
 }

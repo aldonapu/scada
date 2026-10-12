@@ -14,6 +14,10 @@ function App() {
             <Routes>
                 <Route element={<Dashboardlayout />}>
                     <Route path="/scada" element={<Dashboard />} />
+                    <Route path="/data" element={<Data />} />
+                    <Route path="/orders" element={<Orders />} />
+                    <Route path="/users" element={<Users />} />
+                    <Route path="/settings" element={<Settings />} />
                 </Route>
             </Routes>
         </BrowserRouter>
